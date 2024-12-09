@@ -25,6 +25,12 @@ enum class GameState {
     IN_PROGRESS, CROSS_WIN, NOUGHT_WIN, DRAW, ILLEGAL
 }
 
+enum class Player {
+    CROSS, NOUGHT
+}
+
+
+
 //fun gameState(field: Field): GameState
 val Field.gameState: GameState get() {
     // 0 1 2
@@ -63,5 +69,8 @@ fun main() {
     println("XXXXXXXXX".toField().gameState)
     println("XXX_0_00_".toField().gameState)
     println("000_X_XX_".toField().gameState)
+    // println("X________".toField().nextPlayer) // > NOUGHT
+    // println("X0_______".toField().nextPlayer) // > CROSS
+    // println("X0_______".toField().click(0, 2).toList() == "X0X______".toField().toList())
     printField("_________".toCharArray())
 }
