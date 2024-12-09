@@ -25,6 +25,7 @@ enum class GameState {
     IN_PROGRESS, CROSS_WIN, NOUGHT_WIN, DRAW, ILLEGAL
 }
 
+//fun gameState(field: Field): GameState
 val Field.gameState: GameState get() {
     // 0 1 2
     // 3 4 5
