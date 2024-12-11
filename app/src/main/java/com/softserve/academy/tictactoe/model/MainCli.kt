@@ -78,14 +78,8 @@ val Field.nextPlayer: Player get() {
 val Field.click(row: Int, column: Int): Field get {
 
     val next = this.toField().nextPlayer
-    var char = 'X'
+    this[ix(row, column)] = next == Player.NOUGHT ? '0' : 'X'
 
-    if(next == Player.NOUGHT) {
-        char = '0'
-    }
-
-    //modify the array here:
-    this[ix(row, column)] = char
     return this
 
 }
