@@ -61,6 +61,22 @@ val Field.gameState: GameState get() {
     return IN_PROGRESS
 }
 
+val Field.nextPlayer: Player get() {
+
+    var lastPlayer: String = this.toString()
+    lastPlayer = lastPlayer.replace('_', '')
+
+    if (lastPlayer.size == 0 || lastPlayer.last == 'O') {
+        return Player.CROSS
+    }
+    else {
+        return Player.NOUGHT
+    }
+}
+
+val Field.click(row: Int, column: Int): String {
+
+}
 
 fun main() {
     printField(data)
@@ -69,8 +85,8 @@ fun main() {
     println("XXXXXXXXX".toField().gameState)
     println("XXX_0_00_".toField().gameState)
     println("000_X_XX_".toField().gameState)
-    // println("X________".toField().nextPlayer) // > NOUGHT
-    // println("X0_______".toField().nextPlayer) // > CROSS
+    println("X________".toField().nextPlayer) // > NOUGHT
+    println("X0_______".toField().nextPlayer) // > CROSS
     // println("X0_______".toField().click(0, 2).toList() == "X0X______".toField().toList())
     printField("_________".toCharArray())
 }
