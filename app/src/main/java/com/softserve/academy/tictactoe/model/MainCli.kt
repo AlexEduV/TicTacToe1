@@ -63,18 +63,19 @@ val Field.gameState: GameState get() {
 
 val Field.nextPlayer: Player get() {
 
-    var lastPlayer: String = this.toString()
-    lastPlayer = lastPlayer.replace('_', '')
+    val nX = this.count {it == 'X'}
+    val n0 = this.count {it == '0'}
 
-    if (lastPlayer.size == 0 || lastPlayer.last == 'O') {
+    if (nX == 0 || nX == n0) {
         return Player.CROSS
     }
     else {
         return Player.NOUGHT
     }
+
 }
 
-val Field.click(row: Int, column: Int): String {
+val Field.click(row: Int, column: Int): String get {
 
 }
 
