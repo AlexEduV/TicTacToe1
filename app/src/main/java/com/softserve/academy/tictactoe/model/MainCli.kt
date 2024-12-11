@@ -75,10 +75,16 @@ val Field.nextPlayer: Player get() {
 
 }
 
-val Field.click(row: Int, column: Int): Field get {
+fun Field.click(row: Int, col: Int): Field {
 
-    val next = this.toField().nextPlayer
-    this[ix(row, column)] = next == Player.NOUGHT ? '0' : 'X'
+    val next = this.nextPlayer
+
+    var char = 'X'
+    if (next == Player.NOUGHT) {
+        char = '0'
+    }
+
+    this[ix(row, col)] = char
 
     return this
 
