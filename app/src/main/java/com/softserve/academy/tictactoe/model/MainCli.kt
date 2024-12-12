@@ -29,7 +29,10 @@ enum class Player {
     CROSS, NOUGHT
 }
 
-
+fun Player.toChar(): Char = when(this) {
+    Player.CROSS -> 'X'
+    Player.NOUGHT -> '0'
+}
 
 //fun gameState(field: Field): GameState
 val Field.gameState: GameState get() {
@@ -61,6 +64,18 @@ val Field.gameState: GameState get() {
     return IN_PROGRESS
 }
 
+val Field.nextPlayer: Player get() {
+    val nX = this.count { it == 'X' }
+    val n0 = this.count { it == '0' }
+    return if (nX > n0) Player.NOUGHT else Player.CROSS
+}
+
+fun Field.click(row: Int, col: Int): Field {
+    if (this[ix(row, col)] != '_') return this
+    val res = clone()
+    res[ix(row, col)] = nextPlayer.toChar()
+    return res
+}
 
 fun main() {
     printField(data)
@@ -69,8 +84,8 @@ fun main() {
     println("XXXXXXXXX".toField().gameState)
     println("XXX_0_00_".toField().gameState)
     println("000_X_XX_".toField().gameState)
-    // println("X________".toField().nextPlayer) // > NOUGHT
-    // println("X0_______".toField().nextPlayer) // > CROSS
-    // println("X0_______".toField().click(0, 2).toList() == "X0X______".toField().toList())
+    println("X________".toField().nextPlayer) // > NOUGHT
+    println("X0_______".toField().nextPlayer) // > CROSS
+    println("X0_______".toField().click(0, 2).toList() == "X0X______".toField().toList())
     printField("_________".toCharArray())
 }
