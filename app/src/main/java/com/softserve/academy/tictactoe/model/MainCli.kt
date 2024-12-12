@@ -66,27 +66,31 @@ val Field.nextPlayer: Player get() {
     val nX = this.count {it == 'X'}
     val n0 = this.count {it == '0'}
 
-    if (nX == 0 || nX == n0) {
-        return Player.CROSS
+    return if (nX > n0) {
+        Player.NOUGHT
     }
     else {
-        return Player.NOUGHT
+        Player.CROSS
     }
 
 }
 
 fun Field.click(row: Int, col: Int): Field {
 
-    val next = this.nextPlayer
-
+    //encapsulate this
     var char = 'X'
-    if (next == Player.NOUGHT) {
+    if (nextPlayer == Player.NOUGHT) {
         char = '0'
     }
 
-    this[ix(row, col)] = char
+    val index = ix(row, col)
+    val res = this.clone()
 
-    return this
+    if (res[index] == '_') {
+        res[index] = char
+    }
+
+    return res
 
 }
 
