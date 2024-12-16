@@ -1,4 +1,4 @@
-package com.softserve.academy.tictactoe.ui
+package com.softserve.academy.tictactoe
 
 fun main1() {
     val answer = readln()
@@ -6,7 +6,7 @@ fun main1() {
         checkAge(answer.toInt())
     } catch (e: Exception) {
         when (e) {
-            is NumberFormatException -> -1
+            is NumberFormatException,
             is IllegalArgumentException -> 0
             else -> 10
         }

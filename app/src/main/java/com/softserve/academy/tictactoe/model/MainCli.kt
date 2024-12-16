@@ -10,12 +10,14 @@ var data: Field = "0X0X0X0X0".toField()
 
 const val DIM = 3
 
+operator fun Field.get(row: Int, col: Int) = this[ix(row, col)]
+
 fun ix(row: Int, col: Int) = row * DIM + col
 
-fun printField(field: Field): Unit {
+fun printField(field: Field) {
     repeat(DIM) { row ->
         repeat(DIM) { col ->
-            print("${field[ix(row, col)]} ")
+            print("${field[row, col]} ")
         }
         println()
     }
@@ -81,7 +83,7 @@ fun main() {
     printField(data)
 //    println(gameState(data))
     println(data.gameState)
-    println("XXXXXXXXX".toField().gameState)
+//    println("XXXXXXXXX".toField().gameState)
     println("XXX_0_00_".toField().gameState)
     println("000_X_XX_".toField().gameState)
     println("X________".toField().nextPlayer) // > NOUGHT
