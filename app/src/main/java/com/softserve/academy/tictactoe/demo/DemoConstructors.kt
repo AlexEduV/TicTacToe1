@@ -1,4 +1,4 @@
-package com.softserve.academy.tictactoe
+package com.softserve.academy.tictactoe.demo
 
 class A1(val name: String) {
 

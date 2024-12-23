@@ -1,4 +1,4 @@
-package com.softserve.academy.tictactoe
+package com.softserve.academy.tictactoe.demo
 
 import kotlin.random.Random
 

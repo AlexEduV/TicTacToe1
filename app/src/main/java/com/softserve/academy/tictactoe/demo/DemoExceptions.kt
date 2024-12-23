@@ -1,4 +1,4 @@
-package com.softserve.academy.tictactoe
+package com.softserve.academy.tictactoe.demo
 
 fun main1() {
     val answer = readln()
